@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Todolist::Application.config.secret_key_base = 'b3dcb144efee78d99135510c332e97eb18db767e5ebb620e55bc370d5724fb32bb3579a79618230981f687e276336fe6f3cecf757cef39a355c48c00d97416fa'
+Todolist::Application.config.secret_key_base = ENV['SECRET_KEY_BASE']

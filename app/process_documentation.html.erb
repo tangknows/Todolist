@@ -11,6 +11,71 @@ altered application.css -> application.css.scss in stylesheets
 	added in css styling 
 	must restart server to see changes
 	
-Add in user sign up
+Add in user sign up -https://www.bloc.io/users/thanh-ngo/checkpoints/308
+
+	Open config/environments/development.rb and add the following 	
+	lines at the bottom of the file (above end):
+
+	config/environments/development.rb
+	   config.action_mailer.default_url_options = { host: 'localhost:3000' }
+	   config.action_mailer.delivery_method = :smtp
+	   config.action_mailer.perform_deliveries = true
+	end
+	
+Installed devise following user authentication
+Running figaro and installing it
+set up heroku production
+changed environmental variables
+changed security token - rake secret
+
+
+
+Add in 	the following lines for user sign in, this routes to the sign-out page as well
+    <div class="pull-right user-info">
+      <% if current_user %>
+        Hello <%= current_user.email %>! <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+      <% else %>
+        <%= link_to "Sign In", new_user_session_path %> or 
+        <%= link_to "Sign Up", new_user_registration_path %>
+      <% end %>
+    </div>
+	
+Added in the following code to enhance sign up form
+
+<h2>Sign up</h2>
+
+<div class="row">
+  <div class="col-md-8">
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= devise_error_messages! %>
+      <div class="form-group">
+        <%= f.label :name %>
+        <%= f.text_field :name, autofocus: true, class: 'form-control', placeholder: "Enter name" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :email %>
+        <%= f.email_field :email, class: 'form-control', placeholder: "Enter email" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :password %>
+        <%= f.password_field :password, class: 'form-control', placeholder: "Enter password" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :password_confirmation %>
+        <%= f.password_field :password_confirmation, class: 'form-control', placeholder: "Enter password confirmation" %>
+      </div>
+      <div class="form-group">
+        <%= f.submit "Sign up", class: 'btn btn-success' %>
+      </div>
+      <div class="form-group">
+        <%= render "devise/shared/links" %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+signed up and confirmed e-mail
+
+
 
 </html>
