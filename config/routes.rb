@@ -1,7 +1,11 @@
 Todolist::Application.routes.draw do
   
   devise_for :users
-  resources :lists, except: [:index]
+  
+  resources :lists, except: [:index] do
+    resources :items, except: [:index], controller: 'items'
+  end
+  
   get 'about' => 'welcome#about'
   root to: 'welcome#index'
 

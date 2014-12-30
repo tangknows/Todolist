@@ -6,6 +6,9 @@ class ListsController < ApplicationController
 
   def show
     @list = List.find(params[:id])
+    @items = @list.items.paginate(page: params[:page], per_page: 10)
+    @item = Item.new
+    
   end
 
   def new

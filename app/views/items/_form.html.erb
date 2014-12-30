@@ -1,0 +1,8 @@
+<% if current_user %>
+  <h4>Add a comment:</h4>
+  <%= form_for [list, item] do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+	<%= f.submit "Create Item" %>
+  <% end %>
+<% end %>
