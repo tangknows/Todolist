@@ -1,32 +1,55 @@
-<h1><%= @list.title %></h1>
-<h1><%= @list.body %></h1>
- <% if @list.nil? %>
-   <%= link_to "New To-do List", new_list_path, class: 'btn btn-success' %>
- <% end %>
+  <%= stylesheet_link_tag "lists", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "lists", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
 
-	<div class ="col-md-1">
-	    <%= link_to "New", new_list_path, class: 'btn btn-success' %>
-		
+
+<div class="jumbotron">
+	
+	
+<h1><%= @list.title %></h1>
+<p class="lead"><%= @list.body %></p>
+	<div class ="listButtonContainer">
+	<ul class= "list_buttons">
+         <li class= "list_nav"> <% if @list.nil? %>
+   <%= link_to "New To-do List", new_list_path, class: 'btn btn-success btn-xs' %>
+ <% end %></li>
+         <li class= "list_nav"><%= link_to "New List", new_list_path, class: 'btn btn-default btn-xs' %></li>
+		 <li class= "list_nav"><%= link_to "Edit List", edit_list_path(@list), class: 'btn btn-default btn-xs' %> </li>
+		 <li class= "list_nav"><%= link_to "Delete List", @list, method: :delete, class: 'btn btn-default btn-xs' %></li>
+    </ul>
 	</div>
- 
-  <div class="col-md-2">
-    <%= link_to "Edit", edit_list_path(@list), class: 'btn btn-success' %>
-  </div>
-  
-  <div class = "col-md-3">
-	  <%= link_to "Delete List", @list, method: :delete, class: 'btn btn-success' %>
-  </div>
-  
-  <div class = "col-md-4">	
-  	  <%= render  'items/form', list: @list, item: @item %>
-  </div>
- <div class= "col-md-8">
+	
+	<div class="itemsContainer">
+		<div class="col-md-4">Description</div>
+		<div class="col-md-4">Days Remaining</div>
+		<div class="col-md-4">Complete</div>
+	</div>
+	
+	<% @items.each do |item| %>
+	<div class="itemsContainer">
+		<div class="col-md-4"><%= link_to (markdown item.name), [@list, item] %></div>
+		<div class="col-md-4"></div>
+		<div class="col-md-4"><%= link_to "Delete", [@list, item] , method: :delete, class: 'glyphicon glyphicon-ok' %></div>
+	</div>
+	<% end %>
+	
+</div>	
+
+
+
+ <div class= "col-md-4">
 	 <% @items.each do |item| %>
 	 	<div class = "media">
 			<div class = "media-body">
 			<p class = "lead">
+				<%= link_to "Delete", [@list, item] , method: :delete, class: 'glyphicon glyphicon-ok' %>
              <%= link_to (markdown item.name), [@list, item] %>
  			</div>
 		</div>
  	 <% end %>
- </div>
+ 
+</div>
+  <div class = "col-md-8">	
+  	  <%= render  'items/form', list: @list, item: @item %>
+  </div>
+

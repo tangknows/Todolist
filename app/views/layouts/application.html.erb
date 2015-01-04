@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Todolist</title>
+  <title>Self Destructing To-Do </title>
   <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
@@ -10,13 +10,12 @@
 </head>
 <body>
 	<div class="container">
-	<ul class= "nav nav-tabs">
+	<nav>
+	<ul class= "nav nav-pills pull-right">
          <li><%= link_to "Home", root_path %></li>
          <li><%= link_to "About", about_path %></li>
     </ul>
-
-
-
+</nav>
 
 <%= yield %>
 

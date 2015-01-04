@@ -1,6 +1,8 @@
 class ListsController < ApplicationController
   before_action :authenticate_user! # users must be signed in before any lists_controller method
   
+  respond_to :html, :js
+  
   def index
   end
 
@@ -40,6 +42,10 @@ class ListsController < ApplicationController
     else
       flash[:error] = "There was an error deleting the post. Please try again."
       render @list
+    end
+    
+    respond_with(@comment) do |format|
+      format.html { redirect_to [@post.topic, @post] }
     end
   end
 

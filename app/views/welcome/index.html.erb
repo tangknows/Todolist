@@ -1,5 +1,14 @@
-<h1>Welcome#index</h1>
-         <div class="pull-right user-info">
+  <%= stylesheet_link_tag "welcome", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "welcome", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+
+
+<div class="jumbotron">
+<h1>IPSUM LOREM</h1>
+<p class="lead"> Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus </p>
+</div>	
+
+		 <div class="pull-right user-info">
            <% if current_user %>
              Hello <%= current_user.email %>! <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
            <% else %>
