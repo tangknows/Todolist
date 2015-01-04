@@ -53,7 +53,6 @@ html body {
 
 .col-md-4 {
 	padding-top:10px;
-	border:1px solid;
 	height:40px;
 }
 
@@ -62,9 +61,12 @@ html body {
 }
 
 .col- {
-	border: 1px solid;
 }
 
-.itemsContainer {
-	border:1px solid	;
+.itemsContainer span{
+	color:black;
+}
+
+.newItemButton {
+	width:150px;
 }

@@ -28,28 +28,18 @@
 	<% @items.each do |item| %>
 	<div class="itemsContainer">
 		<div class="col-md-4"><%= link_to (markdown item.name), [@list, item] %></div>
-		<div class="col-md-4"></div>
+		<div class="col-md-4"><%= item.days_left %></div>
 		<div class="col-md-4"><%= link_to "Delete", [@list, item] , method: :delete, class: 'glyphicon glyphicon-ok' %></div>
 	</div>
 	<% end %>
 	
+	<div class="itemsContainer">
+		<span ="test">
+<%= render  'items/form', list: @list, item: @item %>
+</span>
+	</div>
+	
 </div>	
 
 
-
- <div class= "col-md-4">
-	 <% @items.each do |item| %>
-	 	<div class = "media">
-			<div class = "media-body">
-			<p class = "lead">
-				<%= link_to "Delete", [@list, item] , method: :delete, class: 'glyphicon glyphicon-ok' %>
-             <%= link_to (markdown item.name), [@list, item] %>
- 			</div>
-		</div>
- 	 <% end %>
- 
-</div>
-  <div class = "col-md-8">	
-  	  <%= render  'items/form', list: @list, item: @item %>
-  </div>
 

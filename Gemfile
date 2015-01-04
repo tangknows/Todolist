@@ -32,6 +32,8 @@ gem 'jquery-rails'
 gem 'figaro', '1.0'
 gem 'devise'
 
+gem 'best_in_place'
+
 gem 'redcarpet'
 
 gem 'will_paginate', '~> 3.0.5'
