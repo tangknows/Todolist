@@ -1,7 +1,7 @@
 class ListsController < ApplicationController
   before_action :authenticate_user! # users must be signed in before any lists_controller method
   
-  respond_to :html, :js
+  respond_to :html, :js, :json
   
   def index
   end
@@ -54,13 +54,8 @@ class ListsController < ApplicationController
 
     #authorize missing
   
-    if @list.update_attributes(params.require(:list).permit(:title, :body))
-      flash[:notice] = "List was updated."
-      redirect_to [@list]
-    else
-      flash[:error] = "There was an error saving the post. Please try again."
-      render :new
-    end
+    @list.update_attributes(params.require(:list).permit(:title, :body))
+    respond_with @list
   end
 
 end

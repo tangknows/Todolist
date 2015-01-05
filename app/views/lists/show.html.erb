@@ -6,15 +6,15 @@
 <div class="jumbotron">
 	
 	
-<h1><%= @list.title %></h1>
-<p class="lead"><%= @list.body %></p>
+<h1><%= best_in_place @list, :title, :inner_class => "bipInput"%></h1></span>
+<p class="lead"><%= best_in_place @list, :body, type: :textarea, :inner_class => "bipInput" %></p>
 	<div class ="listButtonContainer">
 	<ul class= "list_buttons">
          <li class= "list_nav"> <% if @list.nil? %>
    <%= link_to "New To-do List", new_list_path, class: 'btn btn-success btn-xs' %>
  <% end %></li>
          <li class= "list_nav"><%= link_to "New List", new_list_path, class: 'btn btn-default btn-xs' %></li>
-		 <li class= "list_nav"><%= link_to "Edit List", edit_list_path(@list), class: 'btn btn-default btn-xs' %> </li>
+
 		 <li class= "list_nav"><%= link_to "Delete List", @list, method: :delete, class: 'btn btn-default btn-xs' %></li>
     </ul>
 	</div>
